@@ -1,0 +1,110 @@
+{
+	"variables": [],
+	"info": {
+		"name": "obleci.me API",
+		"_postman_id": "84c013ae-3faa-2e9c-a93c-60b8ba467b67",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "127.0.0.1:8080/login",
+			"request": {
+				"url": "127.0.0.1:8080/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"u\" : \"vo1d\",\n\t\"p\" : \"hehehe\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "127.0.0.1:8080/register",
+			"request": {
+				"url": "127.0.0.1:8080/register",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"u\" : \"vo1d\",\n\t\"p\" : \"hehehe\",\n\t\"n\" : \"Daniel\",\n\t\"s\" : \"Ilievski\",\n\t\"e\" : \"daniel@hehe.com\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "127.0.0.1:8080/all",
+			"request": {
+				"url": "127.0.0.1:8080/all",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2bzFkIiwiZXhwIjoxNTE0MTE4MDgxfQ.0bK4AA4vHzKyrhuOWr4AJ6lfr_O8r4e5_hnHeEWtVgp5ST8B6G93UHX2Cj0vJ2hwcbYpQk0-4PdJrMaOq8kFDg",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "127.0.0.1:8080/hello",
+			"request": {
+				"url": "127.0.0.1:8080/hello",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2bzFkIiwiZXhwIjoxNTE0MTE4MDgxfQ.0bK4AA4vHzKyrhuOWr4AJ6lfr_O8r4e5_hnHeEWtVgp5ST8B6G93UHX2Cj0vJ2hwcbYpQk0-4PdJrMaOq8kFDg",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "127.0.0.1:8080/ad/create",
+			"request": {
+				"url": "127.0.0.1:8080/ad/create",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2bzFkIiwiZXhwIjoxNTE0MTIyNTIyfQ.QkJoU-Pbr9EyGxxF9Ak9XCSTodVMl6IuTOiwXuuVaE0HqPx9BmRHbNjT9XeZSw0aG2lVxZic5v2p-vrfVYH31Q",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"n\" : \"Daniel's Stuff\",\n\t\"d\" : \"Sve ima\",\n\t\"a\" : \"ul. 8 br. 4 nas. Ilinden\",\n\t\"lat\" : \"8.264658465\",\n\t\"lng\" : \"9.484848488\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

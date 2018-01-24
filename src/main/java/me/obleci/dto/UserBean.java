@@ -3,6 +3,9 @@ package me.obleci.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import me.obleci.entity.User;
+import org.hibernate.validator.constraints.Email;
+
+import javax.ejb.EJB;
 
 /**
  * Created by Daniel on 05.12.2017.
@@ -20,6 +23,7 @@ public class UserBean {
 	private String surname;
 
 	@JsonProperty("e")
+	@Email
 	private String email;
 
 	public UserBean(User u) {

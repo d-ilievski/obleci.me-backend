@@ -3,6 +3,7 @@ package me.obleci.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import me.obleci.entity.User;
+import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.Column;
 
@@ -25,5 +26,6 @@ public class UserRegistrationBean {
 	private String surname;
 
 	@JsonProperty("e")
+	@Email
 	private String email;
 }

@@ -15,6 +15,7 @@ package me.obleci.rest;
 		import org.springframework.web.bind.annotation.RestController;
 
 		import javax.validation.Valid;
+        import java.util.List;
 
 /**
  * Created by Daniel on 14.12.2017.
@@ -29,16 +30,16 @@ public class AdvertController {
 
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public ResponseEntity create(@RequestBody @Valid AdvertCreationBean advertCreationBean) {
+	public AdvertBean create(@RequestBody @Valid AdvertCreationBean advertCreationBean) {
 
 		String username = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
 		AdvertBean ab = advertService.create(username, advertCreationBean);
 
 		if(ab != null)
-			return new ResponseEntity(HttpStatus.OK);
+			return ab;
 		else
-			return new ResponseEntity(HttpStatus.CONFLICT);
+		    return null;
 	}
 
 	@RequestMapping(value = "/addItem", method = RequestMethod.POST)
@@ -53,4 +54,17 @@ public class AdvertController {
 		else
 			return new ResponseEntity(HttpStatus.CONFLICT);
 	}
+
+    @RequestMapping(value = "/myAds", method = RequestMethod.GET)
+    public List<AdvertBean> myAds() {
+
+        String username = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        List<AdvertBean> list = advertService.myAds(username);
+
+        if(list != null)
+            return list;
+        else
+            return null;
+    }
 }

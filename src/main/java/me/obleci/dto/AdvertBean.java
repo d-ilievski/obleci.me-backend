@@ -12,6 +12,9 @@ import javax.persistence.Column;
 @Data
 public class AdvertBean {
 
+	@JsonProperty("id")
+	private Long id;
+
 	@JsonProperty("n")
 	private String name;
 
@@ -27,11 +30,16 @@ public class AdvertBean {
 	@JsonProperty("lng")
 	private String longitude;
 
+	@JsonProperty("active")
+	private Advert.AdvertStatus active;
+
 	public AdvertBean(Advert advert) {
+		this.id = advert.getId();
 		this.name = advert.getName();
 		this.description = advert.getDescription();
 		this.address = advert.getAddress();
 		this.latitude = advert.getLatitude();
 		this.longitude = advert.getLongitude();
+		this.active = advert.getAdvertStatus();
 	}
 }

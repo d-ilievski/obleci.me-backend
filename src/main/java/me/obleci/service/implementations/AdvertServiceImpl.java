@@ -14,6 +14,9 @@ import me.obleci.service.AdvertService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Daniel on 14.12.2017.
  */
@@ -61,5 +64,19 @@ public class AdvertServiceImpl implements AdvertService {
 		}
 
 		return null;
+	}
+
+	@Override
+	public List<AdvertBean> myAds(String username) {
+
+		User u = userDao.findByUsername(username);
+		List<Advert> adverts = advertDao.findAllByUser(u);
+		List<AdvertBean> transformed = new ArrayList<>();
+
+		for(Advert a : adverts) {
+			transformed.add(new AdvertBean(a));
+		}
+
+		return transformed;
 	}
 }

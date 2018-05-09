@@ -42,7 +42,7 @@ public class UserController {
 	public @ResponseStatus Response login(@RequestBody @Valid UserAuthenticationBean userAuthenticationBean) {
 
 		if (userAuthenticationBean != null)
-			return Response.status(Response.Status.ACCEPTED).build();
+			return Response.status(Response.Status.NO_CONTENT).build();
 		else
 			return Response.status(Response.Status.BAD_REQUEST).build();
 

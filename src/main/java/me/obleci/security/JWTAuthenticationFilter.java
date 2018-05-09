@@ -31,6 +31,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	@Autowired
 	private AuthenticationManager authenticationManager;
 
+	private static final String AccessControlExposeHeaders = "Access-Control-Expose-Headers";
+
 	public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
 		this.authenticationManager = authenticationManager;
 	}
@@ -56,6 +58,19 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 				.signWith(SignatureAlgorithm.HS512, SECRET.getBytes())
 				.compact();
 
+		setAccessControlExposeHeaders(response);
 		response.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
 	}
+
+	private void setAccessControlExposeHeaders(HttpServletResponse res) {
+		String acah = res.getHeader(AccessControlExposeHeaders);
+		if ((acah!=null) && (acah.length()>0)) {
+			acah = acah+", ";
+		} else {
+			acah="";
+		}
+
+		res.setHeader(AccessControlExposeHeaders, acah + "Authorization");
+	}
+
 }

@@ -13,6 +13,10 @@ import javax.persistence.*;
 @Data
 public class Item {
 
+	public enum ItemStatus {
+		AVAILABLE, NOT_AVAILABLE, DELETED;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -37,5 +41,8 @@ public class Item {
 
 	@Column(name = "user_id", insertable = false, updatable = false)
 	private Long userId;
+
+	@Column(name = "status")
+	private ItemStatus status;
 
 }

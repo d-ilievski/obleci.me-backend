@@ -1,15 +1,17 @@
 package me.obleci.rest;
 
-		import me.obleci.dto.UserAuthenticationBean;
-		import me.obleci.dto.UserBean;
-		import me.obleci.dto.UserRegistrationBean;
-		import me.obleci.service.UserService;
-		import org.springframework.beans.factory.annotation.Autowired;
-		import org.springframework.web.bind.annotation.*;
+import me.obleci.dto.UserAuthenticationBean;
+import me.obleci.dto.UserBean;
+import me.obleci.dto.UserRegistrationBean;
+import me.obleci.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-		import javax.validation.Valid;
-		import javax.ws.rs.core.Response;
-		import java.util.List;
+import javax.validation.Valid;
+import javax.ws.rs.core.Response;
+import java.util.List;
 
 /**
  * Created by Daniel on 05.12.2017.
@@ -27,14 +29,14 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public @ResponseStatus Response register(@RequestBody @Valid UserRegistrationBean userRegistrationBean) {
+	public ResponseEntity<Object> register(@RequestBody @Valid UserRegistrationBean userRegistrationBean) {
 
 		UserBean ub = userService.create(userRegistrationBean);
 
 		if (ub != null)
-			return Response.status(Response.Status.ACCEPTED).build();
-		else
-			return Response.status(Response.Status.BAD_REQUEST).build();
+			return new ResponseEntity<>(ub, HttpStatus.OK);
+
+		return new ResponseEntity<>(ub, HttpStatus.BAD_REQUEST);
 
 	}
 

@@ -100,6 +100,18 @@ public class AdvertServiceImpl implements AdvertService {
 	}
 
 	@Override
+	public List<ItemBean> activeItemsByAd(long id) {
+		List<Item> items = itemDao.findAllByAdvertIdAndStatus(id, Item.ItemStatus.AVAILABLE);
+		List<ItemBean> transformed = new ArrayList<>();
+
+		for(Item i : items) {
+			transformed.add(new ItemBean(i));
+		}
+
+		return transformed;
+	}
+
+	@Override
 	public ItemBean itemChangeStatus(ItemAvailableBean itemAvailableBean) {
 
 		Item item = itemDao.findOne(itemAvailableBean.getId());

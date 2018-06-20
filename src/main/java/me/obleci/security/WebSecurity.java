@@ -1,6 +1,5 @@
 package me.obleci.security;
 
-import me.obleci.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
@@ -15,8 +14,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import static me.obleci.security.SecurityConstants.HOME_URL;
-import static me.obleci.security.SecurityConstants.SIGN_UP_URL;
+import static me.obleci.security.SecurityConstants.*;
 
 /**
  * Created by Daniel on 07.12.2017.
@@ -38,6 +36,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 		http.cors().and().csrf().disable().authorizeRequests()
 				.antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
 				.antMatchers(HttpMethod.GET, HOME_URL).permitAll()
+				.antMatchers(HttpMethod.GET, LOCAL_ADS).permitAll()
+				.antMatchers(HttpMethod.GET, KIOSK_ITEMS_BY_AD).permitAll()
 				.anyRequest().authenticated()
 				.and()
 				.addFilter(new JWTAuthenticationFilter(authenticationManager()))

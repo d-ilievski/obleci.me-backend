@@ -15,6 +15,7 @@ public interface AdvertService {
 	List<AdvertBean> myAds(String username);
 
     List<ItemBean> itemsByAd(long id);
+	List<ItemBean> activeItemsByAd(long id);
 
 	ItemBean itemChangeStatus(ItemAvailableBean itemAvailableBean);
 

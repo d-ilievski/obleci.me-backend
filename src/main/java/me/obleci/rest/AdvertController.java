@@ -84,6 +84,19 @@ public class AdvertController {
             return null;
     }
 
+    @RequestMapping(value = "kiosk/item/{id}", method = RequestMethod.GET)
+    public List<ItemBean> activeItemsByAd(@PathVariable("id") long id) {
+
+        String username = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        List<ItemBean> list = advertService.activeItemsByAd(id);
+
+        if(list != null)
+            return list;
+        else
+            return null;
+    }
+
     @RequestMapping(value = "/item/uploadImg", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Object> uploadImg(@RequestParam("file")MultipartFile file, @RequestParam("aId") Long aId) throws IOException {
 	    String extension = "";
